@@ -35,6 +35,7 @@ public class Main {
         }
 
         System.out.print("M N K: ");
+        // :NOTE: валидация входных данных
         int m = in.nextInt(), n = in.nextInt(), k = in.nextInt();
 
         final int result = new MNKGame(

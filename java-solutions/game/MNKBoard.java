@@ -13,6 +13,7 @@ public class MNKBoard implements Board, Position {
             Cell.V, "|"
     );
 
+    // :NOTE: переменные в одну строку
     private final int m, n, k, p;
     private int moveCount = 0;
 
