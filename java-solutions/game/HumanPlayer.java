@@ -14,7 +14,17 @@ public class HumanPlayer implements Player {
         System.out.println();
         System.out.println("Current position");
         System.out.println(position);
-        System.out.println("Enter you move for " + position.getTurn());
-        return new Move(in.nextInt() - 1, in.nextInt() - 1, position.getTurn());
+
+        while (true) {
+            System.out.println("Enter you move for " + position.getTurn());
+            final Move move = new Move(
+                    in.nextInt() - 1,
+                    in.nextInt() - 1,
+                    position.getTurn()
+            );
+            if (position.isValid(move)) {
+                return move;
+            }
+        }
     }
 }

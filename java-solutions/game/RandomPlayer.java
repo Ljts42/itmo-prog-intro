@@ -9,8 +9,8 @@ public class RandomPlayer implements Player {
     public Move makeMove(Position position) {
         while (true) {
             final Move move = new Move(
-                    random.nextInt(3),
-                    random.nextInt(3),
+                    random.nextInt(position.getM()),
+                    random.nextInt(position.getN()),
                     position.getTurn()
             );
             if (position.isValid(move)) {
