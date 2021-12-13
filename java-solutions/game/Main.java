@@ -35,8 +35,44 @@ public class Main {
         }
 
         System.out.print("M N K: ");
+        int m;
+        int n;
+        int k;
         // :NOTE: валидация входных данных
-        int m = in.nextInt(), n = in.nextInt(), k = in.nextInt();
+        while (true) {
+            try {
+                m = in.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Wrong M.");
+                in.next();
+            }
+        }
+        
+        while (true) {
+            try {
+                n = in.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Wrong N.");
+                in.next();
+            }
+        }
+        
+        while (true) {
+            try {
+                k = in.nextInt();
+                if (k > m && k > n) {
+                    throw new AssertionError("K is too big.");
+                }
+                break;
+            } catch (AssertionError e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Wrong K.");
+                in.next();
+            }
+        }
 
         final int result = new MNKGame(
                 new MNKBoard(m, n, k, players.length),

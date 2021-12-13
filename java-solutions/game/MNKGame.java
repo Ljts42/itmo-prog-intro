@@ -44,26 +44,32 @@ public class MNKGame {
     }
 
     private int makeMove(Player player, int no, boolean log) {
-        final Move move = player.makeMove(board.getPosition());
-        final GameResult result = board.makeMove(move);
-        if (log) {
-            System.out.println();
-            System.out.println("Player: " + no);
-            System.out.println(move);
-            System.out.println(board);
-            System.out.println("Result: " + result);
-        }
-        switch (result) {
-            case WIN:
-                return no;
-            case DRAW:
-                return 0;
-            case UNKNOWN:
-                return -1;
-            case LOOSE:
-                return -2;
-            default:
-                throw new AssertionError("Unknown makeMove result " + result);
+        try {
+            final Move move = player.makeMove(board.getPosition());
+            final GameResult result = board.makeMove(move);
+            if (log) {
+                System.out.println();
+                System.out.println("Player: " + no);
+                System.out.println(move);
+                System.out.println(board);
+                System.out.println("Result: " + result);
+            }
+            switch (result) {
+                case WIN:
+                    return no;
+                case DRAW:
+                    return 0;
+                case UNKNOWN:
+                    return -1;
+                case LOOSE:
+                    return -2;
+                default:
+                    throw new AssertionError("Unknown makeMove result " + result);
+            }
+        } catch (Exception e) {
+            System.out.println("Move error: " + e.getMessage());
+            board.makeMove(null);
+            return -2;
         }
     }
 }

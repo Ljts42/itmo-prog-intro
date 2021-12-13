@@ -1,7 +1,8 @@
 package game;
 
 public class PairCells {
-    private Cell prev, next;
+    private Cell prev;
+    private Cell next;
 
     public PairCells(Cell prev, Cell next) {
         this.prev = prev;
