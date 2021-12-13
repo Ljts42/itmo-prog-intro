@@ -6,41 +6,35 @@ import java.io.OutputStreamWriter;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-public class WsppSortedPosition {
+public class Wspp {
     public static void main(String[] args) {
-        WordChecker wordChecker = new WordChecker();
 
-        Map<String, ArrayList<Pair>> words = new TreeMap<>();
-        int n = 1, m = 1;
+        Map<String, ArrayList<Integer>> words = new LinkedHashMap<>();
+        int n = 1;
 
         try {
             MyScanner in = new MyScanner(
                 new InputStreamReader(new FileInputStream(args[0]), "utf-8"),
-                wordChecker
+                new WordChecker()
             );
 
             try {
                 while (in.hasNext()) {
                     String word = in.nextWord().toLowerCase();
 
-                    if (in.getLineNumber() != n) {
-                        n = in.getLineNumber();
-                        m = 1;
-                    }
-
                     if (words.get(word) == null) {
-                        ArrayList<Pair> positions = new ArrayList<>();
-                        positions.add(new Pair(n, m++));
+                        ArrayList<Integer> positions = new ArrayList<>();
+                        positions.add(n++);
                         words.put(word, positions);
                     } else {
-                        ArrayList<Pair> positions = words.get(word);
-                        positions.add(new Pair(n, m++));
+                        ArrayList<Integer> positions = words.get(word);
+                        positions.add(n++);
                     }
                 }
 
@@ -53,7 +47,7 @@ public class WsppSortedPosition {
                     );
 
                     try {
-                        for (Map.Entry<String, ArrayList<Pair>> word: words.entrySet()) {
+                        for (Map.Entry<String, ArrayList<Integer>> word: words.entrySet()) {
                             out.write(word.getKey() + " ");
                             out.write(String.valueOf(word.getValue().size()));
                             for (int entrance = 0; entrance < word.getValue().size(); entrance++) {

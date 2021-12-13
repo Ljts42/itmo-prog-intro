@@ -1,3 +1,3 @@
 public interface CharChecker {
-    boolean check(char c);
+    public boolean check(char c);
 }
