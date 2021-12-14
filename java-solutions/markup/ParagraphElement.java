@@ -2,26 +2,26 @@ package markup;
 
 import java.util.List;
 
-public abstract class ParagraphElement {
-    private List<MarkupElement> listElements;
+public abstract class ParagraphElement implements MarkupElement {
+    protected final List<MarkupElement> listElements;
 
-    public ParagraphElement(List<MarkupElement> listElements) {
+    protected ParagraphElement(List<MarkupElement> listElements) {
         this.listElements = listElements;
     }
 
-    protected void toMarkdown(StringBuilder result, String border) {
-        result.append(border);
+    protected void toMarkdown(StringBuilder result, String tag) {
+        result.append(tag);
         for (MarkupElement element : listElements) {
             element.toMarkdown(result);
         }
-        result.append(border);
+        result.append(tag);
     }
 
-    protected void toHtml(StringBuilder result, String left, String right) {
-        result.append(left);
+    protected void toHtml(StringBuilder result, String tag) {
+        result.append('<').append(tag).append('>');
         for (MarkupElement element : listElements) {
             element.toHtml(result);
         }
-        result.append(right);
+        result.append("</").append(tag).append('>');
     }
 }

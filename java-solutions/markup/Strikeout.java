@@ -2,7 +2,7 @@ package markup;
 
 import java.util.List;
 
-public class Strikeout extends ParagraphElement implements MarkupElement {
+public class Strikeout extends ParagraphElement {
     public Strikeout(List<MarkupElement> listElements) {
         super(listElements);
     }
@@ -14,6 +14,6 @@ public class Strikeout extends ParagraphElement implements MarkupElement {
 
     @Override
     public void toHtml(StringBuilder result) {
-        toHtml(result, "<s>", "</s>");
+        toHtml(result, "s");
     }
 }

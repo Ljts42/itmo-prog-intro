@@ -1,6 +1,6 @@
 package markup;
 
 public interface MarkupElement {
-    void toMarkdown(StringBuilder result);
-    void toHtml(StringBuilder result);
+    public void toMarkdown(StringBuilder result);
+    public void toHtml(StringBuilder result);
 }

@@ -2,7 +2,7 @@ package markup;
 
 import java.util.List;
 
-public class Strong extends ParagraphElement implements MarkupElement {
+public class Strong extends ParagraphElement {
     public Strong(List<MarkupElement> listElements) {
         super(listElements);
     }
@@ -14,6 +14,6 @@ public class Strong extends ParagraphElement implements MarkupElement {
 
     @Override
     public void toHtml(StringBuilder result) {
-        toHtml(result, "<strong>", "</strong>");
+        toHtml(result, "strong");
     }
 }

@@ -1,7 +1,7 @@
 package markup;
 import java.util.List;
 
-public class Paragraph extends ParagraphElement implements MarkupElement {
+public class Paragraph extends ParagraphElement {
     public Paragraph(List<MarkupElement> listElements) {
         super(listElements);
     }
@@ -13,6 +13,8 @@ public class Paragraph extends ParagraphElement implements MarkupElement {
 
     @Override
     public void toHtml(StringBuilder result) {
-        toHtml(result, "", "");
+        for (MarkupElement element : listElements) {
+            element.toHtml(result);
+        }
     }
 }
