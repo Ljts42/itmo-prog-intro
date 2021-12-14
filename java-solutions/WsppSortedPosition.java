@@ -14,15 +14,14 @@ import java.io.IOException;
 
 public class WsppSortedPosition {
     public static void main(String[] args) {
-        WordChecker wordChecker = new WordChecker();
-
         Map<String, ArrayList<Pair>> words = new TreeMap<>();
-        int n = 1, m = 1;
+        int n = 1;
+        int m = 1;
 
         try {
             MyScanner in = new MyScanner(
                 new InputStreamReader(new FileInputStream(args[0]), "utf-8"),
-                wordChecker
+                new WordChecker()
             );
 
             try {

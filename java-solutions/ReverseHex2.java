@@ -1,9 +1,10 @@
+import java.math.BigInteger;
 import java.io.IOException;
 
-public class Reverse {
+public class ReverseHex2 {
     public static void main(String[] args) {
         try {
-            MyScanner in = new MyScanner(System.in, new IntChecker());
+            MyScanner in = new MyScanner(System.in, new HexIntChecker());
 
             int[][] result = new int[10][];
             int n = 0;
@@ -31,7 +32,7 @@ public class Reverse {
                         line = in.getLineNumber();
                         break;
                     }
-                    result[n][m++] = in.nextInt();
+                    result[n][m++] = new BigInteger(in.nextWord(), 16).intValue();
 
                     if (m >= result[n].length) {
                         int[] new_row = new int[result[n].length * 2];
@@ -47,7 +48,6 @@ public class Reverse {
                     result = new_res;
                 }
             }
-
             line = in.getLineNumber();
 
             while (n < line - 1) {
@@ -67,7 +67,7 @@ public class Reverse {
                 System.out.println();
             }
         } catch (IOException e) {
-            System.out.println("Output file error: " + e.getMessage());
+            System.out.println("Input error: " + e.getMessage());
         }
     }
 }

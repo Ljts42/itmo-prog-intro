@@ -88,6 +88,14 @@ public class MyScanner {
         return Integer.parseInt(nextWord());
     }
 
+    public int nextInt(int radix) throws IOException {
+        return Integer.parseInt(nextWord(), radix);
+    }
+
+    public float nextFloat() throws IOException {
+        return Float.parseFloat(nextWord());
+    }
+
     public int getLineNumber() {
         return lineNumber;
     }

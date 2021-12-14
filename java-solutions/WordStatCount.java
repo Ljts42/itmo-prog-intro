@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedWriter;
@@ -13,46 +12,18 @@ public class WordStatCount {
         String[] words = new String[10];
         int n = 0;
         try {
-            BufferedReader in = new BufferedReader(
-                new InputStreamReader(
-                    new FileInputStream(args[0]),
-                    "utf-8"
-                )
+            MyScanner in = new MyScanner(
+                new InputStreamReader(new FileInputStream(args[0]), "utf-8"),
+                new WordChecker()
             );
 
-            char[] buffer = new char[1024];
-            StringBuilder word = new StringBuilder();
-            while (true) {
-                int read = in.read(buffer);
-                
-                if (read == -1) {
-                    if (word.length() > 0) {
-                        words[n++] = word.toString();
-                        word = new StringBuilder();
-                    }
-                    if (n >= words.length) {
-                        String[] newWords = new String[words.length * 2];
-                        System.arraycopy(words, 0, newWords, 0, words.length);
-                        words = newWords;
-                    }
-                    break;
-                }
+            while (in.hasNext()) {
+                words[n++] = in.nextWord().toLowerCase();
 
-                for (int i = 0; i < read; i++) {
-                    if (check(buffer[i])) {
-                        word.append(Character.toLowerCase(buffer[i]));
-                    } else {
-                        if (word.length() > 0) {
-                            words[n++] = word.toString();
-                            word = new StringBuilder();
-                        }
-                        if (n >= words.length) {
-                            String[] newWords = new String[words.length * 2];
-                            System.arraycopy(words, 0, newWords, 0, words.length);
-                            words = newWords;
-                        }
-
-                    }
+                if (n >= words.length) {
+                    String[] newWords = new String[words.length * 2];
+                    System.arraycopy(words, 0, newWords, 0, words.length);
+                    words = newWords;
                 }
             }
             
@@ -136,10 +107,5 @@ public class WordStatCount {
         } catch (IOException e) {
             System.out.println("Input file error: " + e.getMessage());
         }
-    }
-
-    private static boolean check(char c) {
-        return Character.isLetter(c) || c == '\'' ||
-                Character.getType(c) == Character.DASH_PUNCTUATION;
     }
 }
