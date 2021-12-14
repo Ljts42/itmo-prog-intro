@@ -38,10 +38,12 @@ public class Main {
         int m;
         int n;
         int k;
-        // :NOTE: валидация входных данных
         while (true) {
             try {
                 m = in.nextInt();
+                if (m < 1) {
+                    throw new AssertionError();
+                }
                 break;
             } catch (Exception e) {
                 System.out.println("Wrong M.");
@@ -52,6 +54,9 @@ public class Main {
         while (true) {
             try {
                 n = in.nextInt();
+                if (n < 1) {
+                    throw new AssertionError();
+                }
                 break;
             } catch (Exception e) {
                 System.out.println("Wrong N.");
@@ -62,8 +67,8 @@ public class Main {
         while (true) {
             try {
                 k = in.nextInt();
-                if (k > m && k > n) {
-                    throw new AssertionError("K is too big.");
+                if (k < 1 || m < k && n < k) {
+                    throw new AssertionError();
                 }
                 break;
             } catch (AssertionError e) {
