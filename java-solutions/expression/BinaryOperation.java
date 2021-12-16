@@ -9,6 +9,7 @@ public abstract class BinaryOperation implements CommonExpression {
     }
 
     protected abstract int calculate(int first, int second);
+    protected abstract String getSign();
 
     @Override
     public final int evaluate(int x) {
@@ -25,8 +26,6 @@ public abstract class BinaryOperation implements CommonExpression {
                 second.evaluate(x, y, z)
         );
     }
-
-    protected abstract String getSign();
 
     @Override
     public final String toString() {
