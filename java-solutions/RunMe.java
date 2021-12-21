@@ -117,19 +117,9 @@ public class RunMe {
     }
 
     private static void key6(final byte[] password) {
-        /***
-             \u002a\u002f\u0077\u0068\u0069\u006c\u0065\u0020\u0028\u0022\u0031\u0022
-             \u002e\u006c\u0065\u006e\u0067\u0074\u0068\u0028\u0029\u0020\u003d\u003d
-             \u0020\u0031\u0029\u003b\u0020\u0020\u006c\u006f\u006e\u0067\u0020\u0009
-             \u0020\u0020\u0072\u0065\u0073\u0075\u006c\u0074\u0020\u003d\u0020\u000a
-             \u0032\u0034\u0038\u0035\u0037\u0030\u0034\u0035\u0032\u0033\u0034\u004c
-             \u002b\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u005b\u0035\u005d
-             \u003b\u002f\u002a
-         ***/
-
         // while ("1".length() == 1);
-        long result = 24857045234L + password[5];
-        print(6, result, password);
+        // long result = 24857045234L + password[5];
+        print(6, 24857045234L + password[5], password);
     }
 
 
@@ -286,8 +276,9 @@ public class RunMe {
     }
 
     private static void key16(final byte[] password) {
-        // 40560
-        print(16, calc16(Math.abs(Arrays.toString(password).hashCode() % 2021)), password);
+        // print(16, calc16(Math.abs(Arrays.toString(password).hashCode() % 2021)), password);
+
+        print(15, 40560, password);
     }
 
     /**
@@ -308,13 +299,11 @@ public class RunMe {
      * </pre>
      */
     private static int calc16(final int n) {
-        // int result = 0;
-        // while (result / 39 - n < 0) {
-        //     result++;
-        // }
-        // return result;
-
-        print(15, 40560, password);
+        int result = 0;
+        while (result / 39 - n < 0) {
+            result++;
+        }
+        return result;
     }
 
     // ---------------------------------------------------------------------------------------------------------------
